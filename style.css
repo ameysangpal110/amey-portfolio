@@ -1,0 +1,270 @@
+/* ================= style.css (updated) =================
+   Drop this file next to index.html. Put your header image
+   as "amey_header.jpg" in the same folder (or change path).
+   Changes:
+   - removed the About portrait (text-only About, left-aligned)
+   - added hover/focus effect to "View my work" (.link-btn)
+--------------------------------------------------------*/
+
+/* ================= Root & Base ================= */
+:root{
+  --bg:#080808;
+  --surface:#111;
+  --muted:#bfbfbf;
+  --accent:#ff004f;
+  --accent-2:#ff6b8b;
+  --card:#1b1b1b;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --ease: cubic-bezier(.2,.9,.3,1);
+  --light-red-01: rgba(255,77,109,0.12);
+  --light-red-02: rgba(255,77,109,0.08);
+  --nav-bg: rgba(255,255,255,0.03);
+  --nav-border: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#e6e6e6;line-height:1.5;-webkit-font-smoothing:antialiased}
+.container{max-width:1200px;margin:0 auto;padding:18px 6%}
+
+/* ================= NAV ================= */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  position:relative;
+  padding:10px 14px;
+  background:var(--nav-bg);
+  border:1px solid var(--nav-border);
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+}
+.brand{font-weight:700;color:#fff;font-size:18px;letter-spacing:0.2px}
+.menu-btn{background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer;padding:8px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center}
+.menu-btn:focus{outline:3px solid rgba(255,0,79,0.18);outline-offset:2px}
+.menu-btn-mobile{display:none} /* only show on small screens */
+
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{
+  color:#fff;text-decoration:none;padding:8px 10px;position:relative;border-radius:8px;
+  transition:background .18s var(--ease), color .18s;
+  font-weight:600;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:10px;right:10px;bottom:-8px;height:3px;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width .22s;border-radius:3px
+}
+.nav-links a:hover{background:rgba(255,255,255,0.02)}
+.nav-links a:hover::after{width:calc(100% - 20px)}
+.nav-links a:focus{outline:3px solid rgba(255,0,79,0.12);outline-offset:3px}
+.brand:hover{color:var(--accent);cursor:default}
+
+/* ================= Mobile panel ================= */
+.mobile-panel{position:fixed;top:0;right:0;left:0;bottom:0;display:none;align-items:flex-start;justify-content:flex-end;z-index:300}
+.mobile-panel.open{display:flex}
+.panel-inner{width:300px;max-width:92%;height:100vh;background:linear-gradient(180deg,#0f0f0f,#131313);padding:28px 20px;transform:translateX(0);box-shadow:-14px 0 40px rgba(0,0,0,0.6);display:flex;flex-direction:column;gap:12px}
+.panel-inner button.menu-btn{align-self:flex-end;margin-bottom:6px}
+.panel-inner nav{margin-top:8px;display:flex;flex-direction:column;gap:10px}
+.panel-inner nav a{display:block;color:#fff;text-decoration:none;font-weight:600;padding:12px;border-radius:8px;background:transparent;transition:background .15s}
+.panel-inner nav a:hover{background:rgba(255,255,255,0.03)}
+.panel-inner nav a:focus{outline:3px solid rgba(255,0,79,0.12)}
+
+/* ================= HEADER (hero) ================= */
+.header-grid{display:flex;align-items:center;gap:28px;min-height:72vh;padding-top:12px;flex-wrap:wrap}
+.header-text{flex:1 1 52%;max-width:52%}
+.header-text h1{font-size:44px;line-height:1.02;margin:10px 0}
+.header-text h1 span{color:var(--accent)}
+.eyebrow{display:inline-block;color:#ffb3c7;font-size:13px;margin-bottom:8px}
+.role-line{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px;color:#d7d7d7}
+.role-pill{
+  background:linear-gradient(90deg, rgba(255,0,79,0.08), rgba(255,107,139,0.06));
+  color:var(--accent);
+  padding:8px 14px;border-radius:999px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 18px rgba(255,0,79,0.04);
+  transform-origin:center;
+  animation: floatEasy 3.8s var(--ease) infinite;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  position:relative;overflow:hidden;
+}
+.role-pill::before{content:'';position:absolute;left:-40%;top:0;width:60%;height:100%;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.18), rgba(255,255,255,0.03));transform:skewX(-18deg);opacity:0.08;transition:transform .8s var(--ease)}
+.role-pill:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 22px 40px rgba(255,0,79,0.08)}
+.role-pill:hover::before{transform:translateX(120%) skewX(-18deg);opacity:0.12}
+@keyframes floatEasy{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+.role-text{display:inline-block;opacity:1;transition:opacity .35s}
+
+/* header photo — use background-image for full hero fill */
+.header-photo{
+  flex:1 1 44%;
+  min-height:72vh;
+  border-radius:14px;
+  overflow:hidden;
+  background-image: url("amey_header.jpg"); /* <-- place amey_header.jpg next to index.html OR adjust path (e.g. images/amey_header.jpg) */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  transition:transform .5s var(--ease), box-shadow .4s var(--ease), filter .4s;
+  will-change:transform;
+  position:relative;
+}
+.header-photo:hover{transform:translateY(-6px);box-shadow:0 36px 80px rgba(0,0,0,0.6)}
+.header-photo::after{
+  content:'';position:absolute;left:0;right:0;top:0;bottom:0;border-radius:14px;pointer-events:none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.25));
+}
+
+/* ================= ABOUT (text-only left) ================= */
+#about{padding:64px 0;color:#cfcfcf}
+.row{display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap}
+/* about-col-2 becomes full width now that image removed */
+.about-col-2{flex:1 1 100%;max-width:100%}
+.sub-title{font-size:36px;color:#fff;margin-bottom:12px}
+.about-text{color:var(--muted);margin-bottom:18px;font-size:15px}
+.tab-titles{display:flex;gap:18px;margin:18px 0 22px;flex-wrap:wrap}
+.tab-links{cursor:pointer;font-size:15px;font-weight:500;color:#d7d7d7;position:relative;padding-bottom:6px}
+.tab-links.active-link{color:#fff}
+.tab-links.active-link::after{content:'';width:44%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));position:absolute;left:0;bottom:-4px;border-radius:2px}
+.tab-contents{display:none;color:#d0d0d0}
+.tab-contents.active-tab{display:block}
+.tab-contents ul{list-style:none;margin-top:10px}
+.tab-contents ul li{margin:10px 0}
+.tab-contents ul li span{color:var(--accent-2);font-size:13px;display:block;margin-bottom:6px}
+
+/* ================= Link button hover (View my work) ================= */
+.link-btn{
+  text-decoration:none;
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:15px;
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease), color .22s;
+  line-height:1;
+}
+.link-btn:focus{outline:3px solid rgba(255,0,79,0.12);outline-offset:4px}
+.link-btn:hover,
+.link-btn:focus{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: #fff;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(255,0,79,0.12);
+  border-color: transparent;
+}
+
+/* ================= SERVICES ================= */
+#services{padding:36px 0}
+.service-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:18px}
+.service-card{background:var(--card);padding:22px;border-radius:var(--radius);transition:transform .28s var(--ease),background .28s,box-shadow .28s;box-shadow:0 6px 18px rgba(0,0,0,0.5);display:flex;flex-direction:column;gap:8px;min-height:160px}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 28px 60px rgba(0,0,0,0.55)}
+.service-card:hover{background: linear-gradient(180deg, var(--light-red-01), var(--light-red-02));}
+.service-card:hover h3,.service-card:hover p{color:#fff}
+.service-icon{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--glass);transition:transform .22s}
+.service-card:hover .service-icon{transform:scale(1.06)}
+.service-card h3{font-size:18px;color:#fff;margin-top:6px}
+.service-card p{color:#cfcfcf;font-size:14px;line-height:1.45}
+.service-card .link-btn{display:inline-block;margin-top:auto;text-decoration:none;padding:8px 10px;border-radius:8px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.06);font-weight:600;transition:background .18s}
+.service-card:hover .link-btn{background:rgba(255,255,255,0.02)}
+
+/* ================= PORTFOLIO ================= */
+#portfolio{padding:42px 0}
+.work-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:18px}
+.work{position:relative;overflow:hidden;border-radius:14px;background:#161616;transform:translateY(6px);opacity:0;animation:cardIn .6s forwards;box-shadow:0 10px 24px rgba(0,0,0,0.45);transition:transform .28s var(--ease),box-shadow .28s var(--ease),border .18s}
+.work img.thumb{width:100%;height:220px;object-fit:cover;display:block;transition:transform .5s var(--ease),filter .45s var(--ease);filter:grayscale(40%) contrast(.95)}
+.work .layer{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.7));padding:18px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;transition:height .35s ease, background .25s ease, color .25s ease;}
+.work:hover img.thumb{transform:scale(1.06);filter:grayscale(0)}
+.work:hover .layer{height:60%}
+.work:hover .layer{
+  background: rgba(255,77,109,0.95); /* strong warm-red overlay */
+  color:#111;
+}
+.work:hover .layer h3, .work:hover .layer p, .work:hover .layer .tag { color:#111; }
+.layer h3{margin:0;font-size:18px;color:inherit}
+.layer p{font-size:13px;color:inherit}
+.link-icon{position:absolute;top:12px;right:12px;padding:8px;border-radius:10px;background:rgba(255,255,255,0.03);transition:transform .18s}
+.work:hover .link-icon{transform:translateY(-6px);background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+.center-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;pointer-events:none;opacity:0.85}
+.layer .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.layer .tag{
+  background:rgba(0,0,0,0.06);
+  padding:6px 8px;border-radius:999px;font-size:12px;color:var(--muted);border:1px solid rgba(255,255,255,0.02)
+}
+.work:hover .layer .tag{ background:rgba(0,0,0,0.04); color:#111; border:1px solid rgba(0,0,0,0.06); }
+
+@keyframes cardIn{to{transform:translateY(0);opacity:1;}}
+.work:nth-child(1){animation-delay:0.05s}
+.work:nth-child(2){animation-delay:0.12s}
+.work:nth-child(3){animation-delay:0.18s}
+.work::after{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,0,79,0.06), transparent 35%);pointer-events:none}
+
+/* tic-tac-toe background */
+.work.tictactoe{
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 12%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><g stroke='%23ff6b8b' stroke-opacity='0.06' stroke-width='3' stroke-linecap='round'><path d='M33 5 L33 95'/><path d='M67 5 L67 95'/><path d='M5 33 L95 33'/><path d='M5 67 L95 67'/></g></svg>");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:60%;
+}
+
+/* active work */
+.work.active{
+  transform:translateY(-18px) scale(1.02);
+  box-shadow:0 48px 80px rgba(255,0,79,0.16);
+  border:1px solid rgba(255,0,79,0.12);
+  z-index:40;
+}
+.work.active .layer{
+  background: rgba(255,255,255,0.94);
+  color:#111;
+}
+.work.active .link-icon{background:linear-gradient(90deg,var(--accent),var(--accent-2)); transform:scale(1.06)}
+.work.active img.thumb{filter:grayscale(0) contrast(1.02) saturate(1.05)}
+
+/* ================= CONTACT ================= */
+#contact{padding:42px 0}
+.contact-grid{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.contact-left{flex:1 1 300px;max-width:360px;background:#262626;padding:20px;border-radius:12px}
+.contact-right{flex:1 1 420px;background:#1b1b1b;padding:18px;border-radius:12px}
+.contact-right form input,.contact-right form textarea{width:100%;border:0;outline:none;background:#272727;padding:12px 14px;margin:12px 0;color:#fff;border-radius:8px;font-size:15px}
+.contact-right form button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:0;padding:12px 22px;border-radius:10px;font-size:16px;cursor:pointer}
+.success-msg{display:none;margin-top:10px;padding:12px;background:rgba(0,255,120,0.06);color:#7fffd4;border-radius:8px}
+.copyright{text-align:center;padding:18px 0;margin-top:22px;background:#0f0f0f;color:#bfbfbf;border-radius:8px}
+
+/* ================= Responsive tweaks ================= */
+@media (max-width:900px){
+  .header-text h1{font-size:34px}
+  .sub-title{font-size:30px}
+  .header-photo{min-height:56vh}
+}
+@media (max-width:700px){
+  .container{padding:18px 5%}
+  .header-text h1{font-size:28px}
+  .role-line{font-size:16px}
+  .work img.thumb{height:180px}
+  .center-icon{width:56px;height:56px}
+}
+
+/* mobile: stack header with hero full-width */
+@media (max-width:600px){
+  .nav-links{display:none}
+  .menu-btn-mobile{display:inline-flex}
+  .panel-inner{width:86%}
+  .header-grid{flex-direction:column-reverse;align-items:flex-start;gap:18px}
+  .header-text{max-width:100%;flex:1 1 100%}
+  .header-photo{flex:1 1 100%;width:100%;min-height:48vh;border-radius:10px}
+  .service-list{grid-template-columns:1fr}
+  .contact-grid{flex-direction:column}
+  .work img.thumb{height:160px}
+}
+
+/* small polish */
+a:focus{outline:3px solid rgba(255,0,79,0.18);outline-offset:3px}
+.fade-out{opacity:0}
+.fade-in{opacity:1}
