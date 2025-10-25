@@ -75,12 +75,11 @@
       </div>
     </div>
 
-    <!-- HEADER IMAGE: uses amey_header.jpg (file must be in same folder as index.html) -->
-    <!-- This element uses CSS background-image: so it covers fully and responsively -->
+    
     <div class="header-photo" role="img" aria-label="Portrait of Amey Sangpal"></div>
   </header>
 
-  <!-- About (image removed — text-only left aligned as requested) -->
+  <!-- About -->
   <section id="about" class="container">
     <div class="row about-single">
       <div class="about-col-2">
@@ -177,40 +176,41 @@
 
     <div class="work-list">
       <div class="work">
-        <!-- restored the original Unsplash image for Online Leave Application -->
-        <img class="thumb" src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=1200&q=80"
+       
+        <img class="thumb" src="https://plus.unsplash.com/premium_photo-1661783493532-54d62798eb37?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8b25saW5lJTIwbGVhdmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600"
              alt="Online Leave App screenshot" loading="lazy">
         <a class="link-icon" href="#" title="View project" aria-label="View project">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14L21 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3V3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="layer">
-          <h3>Online Leave Application</h3>
-          <p>Full web app built with HTML/CSS frontend and Flask backend. Leave request form, admin approval and notifications.</p>
-          <div class="tags"><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">Responsive</span></div>
+          <h3 style="color:black;">Online Leave Application</h3>
+          <p style="color:black;"> Full web app built with HTML/CSS frontend and Flask backend. Leave request form, admin approval and notifications.</p>
+          <div class ="tags"><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">Responsive</span></div>
         </div>
       </div>
 
       <div class="work tictactoe">
-        <img class="thumb" src="https://images.unsplash.com/photo-1525181478577-1f850c5b1e69?auto=format&fit=crop&w=1200&q=80" alt="Tic Tac Toe game" loading="lazy">
-        <img class="center-icon" src="https://img.icons8.com/ios-filled/200/ffffff/tic-tac-toe.png" alt="tic tac toe icon" aria-hidden="true">
+        <img class="thumb" src="https://images.unsplash.com/photo-1525181478577-1f850c5b1e69?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+        <img class="center-icon" src="https://img.icons8.com/ios-filled/200/ffffff/tic-tac-toe.png" alt="" aria-hidden="true">
         <a class="link-icon" href="#" title="Play demo" aria-label="Play demo">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14L21 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3V3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="layer">
           <h3>Tic Tac Toe</h3>
+         
           <p>Interactive browser game built with HTML, CSS and JS. Two-player & simple AI mode. Click to play demo.</p>
           <div class="tags"><span class="tag">Vanilla JS</span><span class="tag">Game</span></div>
         </div>
       </div>
 
       <div class="work">
-        <img class="thumb" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="To Do List app" loading="lazy">
+        <img class="thumb" src="https://plus.unsplash.com/premium_photo-1683309568772-57011d6c1b7b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG8lMjBkbyUyMGxpc3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="To Do List app" loading="lazy">
         <a class="link-icon" href="#" title="Open project" aria-label="Open project">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14L21 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3V3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="layer">
-          <h3>To-Do List</h3>
-          <p>Lightweight productivity app using vanilla JS. Add/edit/remove tasks with localStorage persistence.</p>
+          <h3 style="color:black;">To-Do List</h3>
+          <p style="color:black;">Lightweight productivity app using vanilla JS. Add/edit/remove tasks with localStorage persistence.</p>
           <div class="tags"><span class="tag">localStorage</span><span class="tag">UX</span></div>
         </div>
       </div>
@@ -315,7 +315,7 @@ if(form){
   setInterval(cycle, 2800);
 })();
 
-/* Work cards: click to toggle active (raise + red overlay) */
+
 (function workCardsBehavior(){
   const works = document.querySelectorAll('.work');
   if(!works) return;
